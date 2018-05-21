@@ -10,7 +10,7 @@ int get_offset(std::string address);
 
 int main(int argc, char** argv) 
 {
-	/* Dynamically allocate a DirectMappedCache object; Constructor opens our output file dm-out.txt */ 
+	/* Dynamically allocate a DirectMappedCache object; Constructor opens the final output file dm-out.txt */ 
 	DirectMappedCache* dmc = new DirectMappedCache(); 
 	
 	/* Use ifstream object to open file containing input: 32-bit hex string whose bits given tag, address, op, and data */ 
@@ -49,8 +49,8 @@ int main(int argc, char** argv)
 	   data[1] = str[9]; 
 	   address[0] = str[2]; 
 	   address[1] = str[3]; 
-
-	   /* */ 
+	
+	   /* Convert string to integer */ 
 	   lineNum = get_line_num(address); 
 	   offset = get_offset(address); 
 	   integerTag = dmc->hex_to_decimal(tag.c_str());
