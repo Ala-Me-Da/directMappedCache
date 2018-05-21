@@ -39,7 +39,7 @@ class Block {
 
 	
 }; 
-// Fix this to avoid memory leaks 
+
 bool isCacheEmpty = true;
 bool isRAMEmpty = true; 
 Block RAM[RAM_SIZE]; 
@@ -139,14 +139,7 @@ void evictCacheLine(std::string newTag, int lnum,  std::string oldTag, int block
 
 	memmove(RAM[oTag].array[lnum].memoryBlock, cache[lnum].memoryBlock, sizeof(int)*BLOCK_SIZE); 
 	memmove(cache[lnum].memoryBlock, RAM[nTag].array[lnum].memoryBlock, sizeof(int)*BLOCK_SIZE); 
-	cache[lnum].tag = newTag; 
-
-	/* std::swap(RAM[oTag].array, cache[lnum].memoryBlock); 
-	std::swap(cache[lnum].memoryBlock, RAM[nTag].array); 
-	cache[lnum].tag = newTag; 
-	*/ 
-	
- 
+	cache[lnum].tag = newTag;  
 } 
 
 int main(int argc, char **argv) 
