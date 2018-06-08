@@ -20,7 +20,8 @@ int main(int argc, char** argv)
 	/* Input is retrived as command line input */ 
 	inFile.open(argv[1]); 
 
-	/* Loop to extract hex code one line at a time, store each letter in str, & parse into tag, address, and data.
+	/* Loop to extract hex string from test filesone line at a time, 
+	   then store each line in string object str, and then parse str into tag, address, and data.
 	   Read or write operation is determine by the if-statement in the loop. 
 	   Once address is parsed, further divide it into offset (memory block number) and cacheline number. 
 	   line number and offset are crucial in storing data. */ 
@@ -65,7 +66,7 @@ int main(int argc, char** argv)
 	    } 
 	}
  	
-	/* Garbage collection */ 
+	/* Garbage collection; Destructor in dmc closes dm-out.txt file */ 
 	delete dmc; 
 	inFile.close();  
 	
@@ -81,9 +82,9 @@ int main(int argc, char** argv)
 
 int get_line_num(std::string address) 
 {
-	/* store address in stringstream with format flag hex
-	 *  this allows storeage of the address an a number. 
-	 *  bitset container to work with individual bits, and to 
+	/* store address in stringstream object with format flag hex
+	 *  this allows storage of the address as an integer. 
+	 *  Bitset container is used to work with individual bits, and to 
 	 *  convert those bits into integers using bitset::to_ulong 
 	 */ 
 	std::stringstream ss; 
@@ -93,6 +94,7 @@ int get_line_num(std::string address)
 	std::bitset<8> addressBits(num);  
 	std::bitset<5> lineBits; 
 
+	/* Index starts at 3 because the last 5 elements in addressBits are the line number. */  
 	for(int i = 3; i < addressBits.size(); i++) 
 	{
 		lineBits.set(i - 3, addressBits[i]); 
