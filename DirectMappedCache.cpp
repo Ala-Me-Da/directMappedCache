@@ -27,14 +27,6 @@ void DirectMappedCache::read(int line_num, int offset, int tag)
  */ 
 void DirectMappedCache::write(int line_num, int offset, int tag, int data) 
 {
-	if(isCacheEmpty) { 
-		cache[line_num].tag = tag; 
-		cache[line_num].memory_block[offset] = data; 
-		cache[line_num].dirty_bit = 1; 
-		isCacheEmpty = false;  
-		return; 
-	} 
-
 	if(tag != cache[line_num].tag ) { 
 		/* Write Miss. Evict current line then write to new cache line, set dirty bit */
 		evict_cache_line(line_num, tag, cache[line_num].tag);    
