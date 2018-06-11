@@ -10,7 +10,6 @@
 #include <fstream> 
 #include <iostream>  
 #include <string> 
-#include <vector> 
 
 class DirectMappedCache {
 	struct cacheLine {
@@ -26,10 +25,9 @@ class DirectMappedCache {
 	cacheLine cache[CACHE_SIZE]; 
 	Block RAM[RAM_SIZE];  
 	std::ofstream outputFile;  
-	bool isCacheEmpty; 
 	
 	public:
-	DirectMappedCache() { isCacheEmpty = true; outputFile.open("dm-out.txt", std::ios::app); }  
+	DirectMappedCache() { outputFile.open("dm-out.txt", std::ios::app); }  
  	~DirectMappedCache() { outputFile.close(); } 
 	void read(int line_num, int offset, int tag); 
 	void write(int line_num, int offset, int tag, int data); 
