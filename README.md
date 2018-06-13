@@ -16,9 +16,12 @@ write-miss / read-miss eviction. These instructions are the ```tag```, ```addres
 
 For example, extracting these features for one line ```36D2 FF C2``` is done as follows: 
 
-```tag```: Is the first leftmost 8-bits in the hexadecimal number: 36
-```data``` : Is the last rightmost 8-bits in the hexadecimal number: C2 
+```tag```: Is the first leftmost 8-bits in the hexadecimal number: 36.
+
+```data``` : Is the last rightmost 8-bits in the hexadecimal number: C2.
+
 read/write operation: 8-bits in the middle of the hexadecimal number: FF => write to cache. 
+
 ```address``` : The next 8-bits after the tag, D2. 
 The address is paritioned into an ```offset``` and ```line number```. The address assigns values to ```offset``` and ```line number``` depending on the memory size of the cacheline and number of cachelines, respectively.
  
@@ -44,20 +47,16 @@ The information is, in order, the data returned from the read operation (in hexa
 # Compiling & Executing
 
 Requires C++11 or greater to compile. 
-Open command prompt, enter directory containing this repo, and type the folloiwng to complie the project: 
+Open command prompt, enter the directory containing this repo, and type the following to complie the project: 
 
 ```
-
 g++ -std=c++11 DirectMappedCache.h DirectMappedCache.cpp dmcache2.cpp
-
 ```
 
 
 Next, use run the resulting a.out executable with one of the test files. E.g.,
 ```
-
 ./a.out test-file.txt 
-
 ```
 This will output ```dm-out.txt``` into the current directory. 
 
