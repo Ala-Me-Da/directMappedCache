@@ -26,7 +26,7 @@ read/write operation: 8-bits in the middle of the 32-bit hexadecimal number: FF 
 The address is paritioned into an ```offset``` and ```line number```. The address assigns values to ```offset``` and ```line number``` depending on the memory size of the cacheline and number of cachelines, respectively.
  
 In this case, the offset requires 3-bits since the cacheline is 8 bytes, and would need only log_2(8) = 3 bits for addressing.
-Simiarily, the line number requires the remaining  5-bits. There are 32 cachelines, so 5-bits are necessary for addressing. 
+The line number requires the remaining  5-bits. There are 32 cachelines, so 5-bits are necessary for addressing. 
 Example: 
 D2 = 11010010, which means offset = 010 = 2, and line number = 11010 = 26. So given a write operation, the program stores  ```data```  in line number 26, inside line number 26's memory block at index 2. 
 
