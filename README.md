@@ -16,11 +16,11 @@ write-miss / read-miss eviction. These instructions are the ```tag```, ```addres
 
 For example, extracting these features for one line ```36D2 FF C2``` is done as follows: 
 
-```tag```: Is the first leftmost 8-bits in the hexadecimal number: 36.
+```tag```: Is the first leftmost 8-bits in the 32-bit hexadecimal number: 36.
 
-```data``` : Is the last rightmost 8-bits in the hexadecimal number: C2.
+```data``` : Is the last rightmost 8-bits in the 32-bit hexadecimal number: C2.
 
-read/write operation: 8-bits in the middle of the hexadecimal number: FF => write to cache. 
+read/write operation: 8-bits in the middle of the 32-bit hexadecimal number: FF => write to cache. 
 
 ```address``` : The next 8-bits after the tag, D2. 
 The address is paritioned into an ```offset``` and ```line number```. The address assigns values to ```offset``` and ```line number``` depending on the memory size of the cacheline and number of cachelines, respectively.
