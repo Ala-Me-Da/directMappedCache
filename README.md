@@ -59,24 +59,4 @@ Next, use run the resulting a.out executable with one of the test files. E.g.,
 ./a.out test-file.txt 
 ```
 This will output ```dm-out.txt``` into the current directory. 
-
-# Implementation  
-
-## DirectMappedCache.h 
-
-Header file containing the definition of the ```DirectMappedCache``` class and its core member functions and variables. 
-
-## DirectMappedCache.cpp 
-
-Implements ```read()```, ```write()``` operations and ```evict_cache_line()``` function for the write-allocate write-miss policy.  
-
-## dmcache2.cpp
-
-```dmcache2.cpp``` is the main .cpp file to utilizing the ```DirectMappedCache``` class to produce run the direct mapped cache simulation and produce the desired ```dm-out.txt``` showcasing correct direct mapped cachcing behavior. 
-
-Direct mapped cache is implemented utilizing an object-oriented approach. A class ```DirectMappedCache``` is defined to use by the main program ```dmcache2.cpp``` for reading/writing to cache. 
-
-Cache is modelled as an array of 256/8 = 32 cache lines objects. The cache line object is defined as a  struct ``` cacheLine```  with member variables integers ```tag``` , ``` dirty_bit``` , and then an integer array ``` memory_block``` . ```memory_block``` forms the core of the cacheline, as it stores the data partitioned from the input text file. 
-
-Main memory, or RAM, is treated as an array of caches. Each array element is a ``` Block```  object which in itself contains an array of 32 ``` cacheLine```  objects. This model makes for easy eviction between ``` cache```  and ``` RAM```  whenever a cache miss calls the ``` evict_cache_line``` member function. 
  
