@@ -20,7 +20,7 @@ void DirectMappedCache::read(int line_num, int offset, int tag)
 	}  else { 
 		outputFile << std::hex << std::uppercase << std::setw(2) << std::setfill('0') << cache[line_num].memory_block[offset] << " " << hit << " " << cache[line_num].dirty_bit << "\n";
 	} 
-} //DirectMappedCache::read() 
+} 
 
 /* 
  * Writes data to the cache member variable. 
@@ -38,7 +38,7 @@ void DirectMappedCache::write(int line_num, int offset, int tag, int data)
 		cache[line_num].dirty_bit = 1; 
 	} 
 
-} //DirectMappedCache::write() 
+} 
 
 /* 
  * Evicts a cacheline to RAM from the cache member variable to RAM upon a read miss or write miss. 
@@ -50,5 +50,5 @@ void DirectMappedCache::evict_cache_line(int line_num, int new_tag, int old_tag)
 	std::swap(cache[line_num].memory_block, RAM[new_tag].ram_entry[line_num].memory_block); 
 	cache[line_num].tag = new_tag; 
 	
-} //DirectMappedCache::evict_cache_line 
+}
 
